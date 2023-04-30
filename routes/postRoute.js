@@ -32,12 +32,15 @@ router.post('/addpost',async(req,res)=>{
 
 router.post('/removepost',async(req,res)=>{
     try{
-        const {id,title,summary,content,imageUrls} = req.body;
-        await Post.findByIdAndRemove(id);
-        return res.send('Post removed');
+        const {_id} = req.body;
+        const result = await Post.findByIdAndDelete(_id);
+        if(!result){
+            return res.status(404).json('Post not found');
+        }
+        return res.status(200).json('Post removed');
     }
     catch(error){
-        return res.status(404).json(error);
+        return res.status(500).json(error);
     }
 })
 
