@@ -20,7 +20,7 @@ function Adminscreen() {
             });
         }
         catch(error){
-            Swal.fire('Oops','Something went wrong','error');
+            Swal.fire('Oops','Something went wrong!','error');
         }
     }
   return (
