@@ -5,6 +5,7 @@ import Homescreen from './screen/Homescreen';
 import Adminscreen from './screen/Adminscreen';
 import Loginscreen from './screen/Loginscreen';
 import Footer from './component/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

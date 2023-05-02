@@ -1,11 +1,4 @@
-import React, { useState } from 'react'
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage
-} from 'mdb-react-ui-kit';
+import React, { useState } from 'react';
 import {
   MDBBtn,
   MDBModal,
@@ -17,29 +10,19 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 
-function PostComponent({ id, title, summary, content, imageurls }) {
+export default function Modal() {
   const [fullscreenXlModal, setFullscreenXlModal] = useState(false);
 
   const toggleShow = () => setFullscreenXlModal(!fullscreenXlModal);
+
   return (
     <>
-      <MDBCard className='mb-3'>
-        <MDBCardBody>
-          <MDBCardTitle>{title}</MDBCardTitle>
-          <MDBCardText>
-            {summary}
-          </MDBCardText>
-          <MDBCardText>
-          </MDBCardText>
-        </MDBCardBody>
-        <MDBCardImage position='bottom' src='https://mdbootstrap.com/img/new/slides/041.webp' alt='...' />
-      </MDBCard>
-      <MDBBtn onClick={toggleShow}>Read the post</MDBBtn>
+      <MDBBtn onClick={toggleShow}>Full screen below xl</MDBBtn>
       <MDBModal tabIndex='-1' show={fullscreenXlModal} setShow={setFullscreenXlModal}>
         <MDBModalDialog size='fullscreen'>
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBModalTitle>{title}</MDBModalTitle>
+              <MDBModalTitle>Full screen below xl</MDBModalTitle>
               <MDBBtn
                 type='button'
                 className='btn-close'
@@ -57,7 +40,5 @@ function PostComponent({ id, title, summary, content, imageurls }) {
         </MDBModalDialog>
       </MDBModal>
     </>
-  )
+  );
 }
-
-export default PostComponent
