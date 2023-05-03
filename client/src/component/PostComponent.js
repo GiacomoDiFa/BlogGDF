@@ -23,7 +23,7 @@ function PostComponent({ id, title, summary, content, imageurls }) {
   const toggleShow = () => setFullscreenXlModal(!fullscreenXlModal);
   return (
     <>
-      <MDBCard className='mb-3'>
+      <MDBCard>
         <MDBCardBody>
           <MDBCardTitle>{title}</MDBCardTitle>
           <MDBCardText>
@@ -34,6 +34,7 @@ function PostComponent({ id, title, summary, content, imageurls }) {
         </MDBCardBody>
         <MDBCardImage position='bottom' src='https://mdbootstrap.com/img/new/slides/041.webp' alt='...' />
       </MDBCard>
+
       <MDBBtn onClick={toggleShow}>Read the post</MDBBtn>
       <MDBModal tabIndex='-1' show={fullscreenXlModal} setShow={setFullscreenXlModal}>
         <MDBModalDialog size='fullscreen'>
