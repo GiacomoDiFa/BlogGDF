@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 const dbConfig = require('./db');
@@ -8,6 +10,9 @@ const postRoute = require('../routes/postRoute');
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(cookieParser());
+
 app.use('/api/user',userRoute);
 app.use('/api/post',postRoute);
 
