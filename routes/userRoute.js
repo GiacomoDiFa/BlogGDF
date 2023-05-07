@@ -18,7 +18,6 @@ class Session{
 const sessions = {}
 
 router.post('/signin', async(req,res)=>{
-    /*modificare mettendo il fatto che vedo l'utente da database admin*/
     const {username, password} = req.body;
     if(!username){
         res.status(401).end()
@@ -109,7 +108,7 @@ router.post('/refresh', async(req,res)=>{
     res.end();
 });
 
-router.get('logout',async(req,res)=>{
+router.get('/logout',async(req,res)=>{
     if (!req.cookies) {
         res.status(401).end();
         return
@@ -120,7 +119,7 @@ router.get('logout',async(req,res)=>{
         res.status(401).end();
         return
     }
-    
+
     delete sessions[sessionToken];
 
     res.cookie("session_token", "", { expires: new Date() });
