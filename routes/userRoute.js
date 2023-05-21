@@ -1,129 +1,75 @@
 const express = require('express');
 const router = express.Router();
 const uuid = require('uuid');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const secretKey = 'your_secret_key';
 
 const User = require('../models/User');
 
-class Session{
-    constructor(username, expiresAt){
-        this.username = username
-        this.expiresAt = expiresAt
-    }
-
-    isExpired(){
-        this.expiresAt < (new Date())
-    }
+// Funzione per generare un token JWT
+function generateToken(user) {
+    const payload = {
+        id: user.id,
+        username: user.username,
+        role: user.role
+    };
+    return jwt.sign(payload, secretKey, { expiresIn: '1h' });
 }
 
-const sessions = {}
-
-router.post('/signin', async(req,res)=>{
-    const {username, password} = req.body;
-    if(!username){
+// Rotta per il login
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    if (!username) {
         res.status(401).end()
         return
     }
-    const user = await User.findOne({email:username});
-    const expectedPassword = user.password;
-    if(!expectedPassword || expectedPassword !== password){
-        res.status(401).end()
-        return
+    try {
+        // Verifica le credenziali di accesso
+        const user = await User.findOne({ email: username });
+        if (!user) {
+            return res.status(404).json("Utente non trovato");
+        }
+        const passwordMatch = bcrypt.compareSync(password, user.password);
+        if (!passwordMatch) {
+            return res.status(404).json("Password non corretta");
+        }
+
+        // Genera il token JWT
+        const token = generateToken(user);
+
+        res.json({ token });
+    } catch (error) {
+        res.status(401).json({ message: error.message });
     }
-
-    const sessionToken = uuid.v4();
-
-    const now = new Date();
-    const expiresAt = new Date(+now+120*1000);
-
-    const session = new Session(username,expiresAt);
-    sessions[sessionToken] = session;
-    
-    res.cookie("session_token",sessionToken,{expires:expiresAt});
-    res.end();
 });
 
-router.get('/welcome', async(req,res)=>{
-    if(!req.cookies){
-        res.status(401).end();
-        return
+// Rotta per la registrazione
+router.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+
+    // Verifica se l'utente esiste già
+    const userExists = await User.findOne({ email: username });
+    if (userExists) {
+        return res.status(400).json({ message: 'Utente già registrato' });
     }
 
-    const sessionToken = req.cookies['session_token'];
-    if(!sessionToken){
-        res.status(401).end();
-        return
-    }
-    userSession = sessions[sessionToken];
-    if(!userSession){
-        res.status(401).end();
-        return
-    }
-    if(userSession.isExpired()){
-        delete sessions[sessionToken];
-        res.status(401).end();
-        return
-    }
-    res.send(`Welcome ${userSession.username}!`).end();
-});
+    // Hash della password
+    const hashedPassword = bcrypt.hashSync(password, 10);
 
-router.post('/refresh', async(req,res)=>{
-    if (!req.cookies) {
-        res.status(401).end();
-        return
-    }
+    // Crea un nuovo utente
+    const user = new User({
+        email: username,
+        password: hashedPassword,
+    });
 
-    const sessionToken = req.cookies['session_token'];
-    if (!sessionToken) {
-        res.status(401).end();
-        return
-    }
+    // Aggiungi il nuovo utente al database
+    await user.save();
 
-    userSession = sessions[sessionToken]
-    if (!userSession) {
-        res.status(401).end();
-        return
-    }
-    if (userSession.isExpired()) {
-        delete sessions[sessionToken];
-        res.status(401).end();
-        return
-    }
-    // (END) The code until this point is the same as the first part of the welcomeHandler
+    // Genera il token JWT
+    const token = generateToken(user);
 
-    // create a new session token
-    const newSessionToken = uuid.v4();
-
-    // renew the expiry time
-    const now = new Date();
-    const expiresAt = new Date(+now + 120 * 1000);
-    const session = new Session(userSession.username, expiresAt);
-
-    // add the new session to our map, and delete the old session
-    sessions[newSessionToken] = session;
-    delete sessions[sessionToken];
-
-    // set the session token to the new value we generated, with a
-    // renewed expiration time
-    res.cookie("session_token", newSessionToken, { expires: expiresAt });
-    res.end();
-});
-
-router.get('/logout',async(req,res)=>{
-    if (!req.cookies) {
-        res.status(401).end();
-        return
-    }
-
-    const sessionToken = req.cookies['session_token'];
-    if (!sessionToken) {
-        res.status(401).end();
-        return
-    }
-
-    delete sessions[sessionToken];
-
-    res.cookie("session_token", "", { expires: new Date() });
-    res.end();
+    res.json({ token });
 });
 
 module.exports = router;
