@@ -20,7 +20,7 @@ function Homescreen() {
 
   return (
     <>
-    {listaPost.map((post)=>(<PostComponent key={post._id} id={post._id} title={post.title} summary={post.summary} content={post.content} imageurls={post.imageUrls[0]}/>))}
+    {listaPost.slice().reverse().map((post)=>(<PostComponent key={post._id} id={post._id} title={post.title} summary={post.summary} content={post.content} imageurls={post.imageUrls[0]}/>))}
     </>
   )
 }

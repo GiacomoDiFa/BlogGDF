@@ -10,6 +10,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import PrivateRoutes from './PrivateRoutes';
 import Registerscreen from './screen/Registerscreen';
+import Postscreen from './screen/Postscreen';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/' element={<Homescreen />} />
           <Route path='/login' element={<Loginscreen />} />
           <Route path='/register' element={<Registerscreen />}/>
+          <Route path='/post/:id' element={<Postscreen/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />

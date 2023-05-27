@@ -13,6 +13,17 @@ router.get('/getallpost',async(req,res)=>{
     }
 });
 
+router.post('/getpostbyid',async(req,res)=>{
+    const {id} = req.body;
+    try{
+        const post = await Post.findOne({_id:id});
+        res.send(post);
+    }
+    catch(error){
+        return res.status(400).json({message:error});
+    }
+})
+
 router.post('/addpost',async(req,res)=>{
         const {title,summary,content,imageUrls} = req.body;
         try{
