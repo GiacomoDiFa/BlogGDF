@@ -16,9 +16,11 @@ function Loginscreen() {
         body: JSON.stringify({ username, password })
       });
       const data = await response.json();
+      
 
       // Salva il token JWT nel local storage
-      localStorage.setItem('token', response);
+      localStorage.setItem('token', data.token);
+      console.log(data.token);
 
       // Reindirizza l'utente alla pagina home
       window.location.href='/';

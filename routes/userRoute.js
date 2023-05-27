@@ -9,11 +9,13 @@ const User = require('../models/User');
 
 // Funzione per generare un token JWT
 function generateToken(user) {
+
     const payload = {
-        id: user.id,
-        username: user.username,
-        role: user.role
-    };
+        id: user._id,
+        email: user.email,
+        isAdmin: user.isAdmin
+    }
+    
     return jwt.sign(payload, secretKey, { expiresIn: '1h' });
 }
 
@@ -27,6 +29,7 @@ router.post('/login', async (req, res) => {
     try {
         // Verifica le credenziali di accesso
         const user = await User.findOne({ email: username });
+        console.log(user);
         if (!user) {
             return res.status(404).json("Utente non trovato");
         }
@@ -71,5 +74,17 @@ router.post('/register', async (req, res) => {
 
     res.json({ token });
 });
+
+router.post('/verifyrole', async (req, res) => {
+    const { token } = req.body;
+    try{
+        const decodedToken = jwt.verify(token, secretKey);
+        const userRole = decodedToken.isAdmin;
+        res.json({ decodedToken });
+    }
+    catch(error){
+        console.log(error);
+    }
+})
 
 module.exports = router;
