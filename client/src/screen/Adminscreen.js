@@ -63,19 +63,35 @@ function Adminscreen() {
     }
     return (
         <>
-            <div>
-                <h1>Post creation</h1>
+        <header class="masthead" >
+        <div class="container position-relative px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="site-heading">
+              <h1>Post creation</h1>
                 <input type='text' placeholder='Title' value={title} onChange={(e) => { setTitle(e.target.value) }} />
                 <input type='text' placeholder='Summary' value={summary} onChange={(e) => { setSummary(e.target.value) }} />
                 <input type='text' placeholder='Content' value={content} onChange={(e) => { setContent(e.target.value) }} />
                 <input type='text' placeholder='Image Url' value={imageUrls} onChange={(e) => { setImageUrls([e.target.value]) }} />
                 <button onClick={addPost}>Add Post</button>
+              </div>
             </div>
-            <div>
-                <h1>Post elimination</h1>
+          </div>
+        </div>
+      </header>
+      <header class="masthead" >
+        <div class="container position-relative px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="site-heading">
+              <h1>Post elimination</h1>
                 <input type='text' placeholder='Title to delete' value={fieldValueTitleToDelete} name={fieldNameTitleToDelete} onChange={(e)=>{setFieldValueTitleToDelete(e.target.value);setFieldNameTitleToDelete(e.target.name)}}/>
                 <button onClick={deletePost}>Delete Post</button>
+              </div>
             </div>
+          </div>
+        </div>
+      </header>
         </>
     )
 }

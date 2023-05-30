@@ -16,26 +16,37 @@ function Loginscreen() {
         body: JSON.stringify({ username, password })
       });
       const data = await response.json();
-      
+
 
       // Salva il token JWT nel local storage
       localStorage.setItem('token', data.token);
       console.log(data.token);
 
       // Reindirizza l'utente alla pagina home
-      window.location.href='/';
+      window.location.href = '/';
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
-    </div>
+    <>
+      {/*<!-- Page Header-->*/}
+      <header class="masthead" >
+        <div class="container position-relative px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="site-heading">
+                <h1>LOGIN</h1>
+                <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+                <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                <button onClick={handleLogin}>Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
 
