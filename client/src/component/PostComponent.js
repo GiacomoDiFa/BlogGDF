@@ -6,30 +6,23 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
-function PostComponent({id,title,summary,content,imageurls}) {
+function PostComponent({ id, title, summary, content, imageurls }) {
   const navigate = useNavigate();
-  const handleCardClick = () =>{
+  const handleCardClick = () => {
     navigate('/post/' + id);
   }
   return (
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea onClick={handleCardClick}>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://mdbootstrap.com/img/new/slides/041.webp"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {summary}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+    <>
+      {/*<!-- Post preview-->*/}
+      <div class="post-preview">
+        <a onClick={handleCardClick}>
+          <h2 class="post-title">{title}</h2>
+          <h3 class="post-subtitle">{summary}</h3>
+        </a>
+      </div>
+      {/*Divider*/}
+      <hr class="my-4" />
+    </>
   );
 }
 

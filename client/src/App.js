@@ -1,5 +1,4 @@
 import './App.css';
-import Navbar from './component/Navbar';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Homescreen from './screen/Homescreen';
 import Adminscreen from './screen/Adminscreen';
@@ -11,11 +10,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import PrivateRoutes from './PrivateRoutes';
 import Registerscreen from './screen/Registerscreen';
 import Postscreen from './screen/Postscreen';
+import CustomNavbar from './component/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <CustomNavbar />
       <BrowserRouter>
         <Routes>
           <Route element={<PrivateRoutes />}>
@@ -23,11 +23,11 @@ function App() {
           </Route>
           <Route path='/' element={<Homescreen />} />
           <Route path='/login' element={<Loginscreen />} />
-          <Route path='/register' element={<Registerscreen />}/>
-          <Route path='/post/:id' element={<Postscreen/>}/>
+          <Route path='/register' element={<Registerscreen />} />
+          <Route path='/post/:id' element={<Postscreen />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
