@@ -11,6 +11,8 @@ import PrivateRoutes from './PrivateRoutes';
 import Registerscreen from './screen/Registerscreen';
 import Postscreen from './screen/Postscreen';
 import CustomNavbar from './component/Navbar';
+import Aboutscreen from './screen/Aboutscreen';
+import Contactscreen from './screen/Contactscreen';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path='/login' element={<Loginscreen />} />
           <Route path='/register' element={<Registerscreen />} />
           <Route path='/post/:id' element={<Postscreen />} />
+          <Route path='/about' element={<Aboutscreen/>}/>
+          <Route path='/contact' element={<Contactscreen/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>
