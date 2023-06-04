@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import backgroundimage from 'C:/Users/giaco/Documents/Progetti/blogbyme/client/src/assets/images/WIN_20230212_21_26_00_Pro.jpg'
 
 function Postscreen() {
     let { id } = useParams();
     const [post, setPost] = useState();
+    const [imageUrl,setimageUrl] = useState('');
     useEffect(() => {
         const getData = async () => {
             try {
@@ -18,6 +20,7 @@ function Postscreen() {
                 console.log(id);
                 console.log(data);
                 setPost(data);
+                setimageUrl('C:/Users/giaco/Documents/Progetti/blogbyme/client/src/'+data.imageUrls[0]);
             }
             catch (error) {
                 console.log(error);
@@ -27,8 +30,9 @@ function Postscreen() {
     }, []);
     return (
         <>
-        {post &&(       <div>
-            <header class="masthead">
+        {post&&imageUrl&&(   
+            <div>
+            <header className="masthead" style={{ backgroundImage: `url(${imageUrl})` }}>
                 <div class="container position-relative px-4 px-lg-5">
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">

@@ -13,7 +13,7 @@ const postSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    imageUrls:[]
+    imageUrls:[String]
 },{
     timestamp:true
 })

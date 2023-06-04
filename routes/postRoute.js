@@ -1,7 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const fs = require('fs');
 
 const Post = require('../models/Post');
+
+const storage = multer.diskStorage({
+    destination: function(req,file,cb){
+        cb(null,'C:/Users/giaco/Documents/Progetti/blogbyme/client/src/assets/images/');
+    },
+    filename: function(req,file,cb){
+        cb(null,file.originalname);
+    }
+});
+
+const upload = multer({storage:storage});
+
 
 router.get('/getallpost',async(req,res)=>{
     try{
@@ -24,14 +38,16 @@ router.post('/getpostbyid',async(req,res)=>{
     }
 })
 
-router.post('/addpost',async(req,res)=>{
+router.post('/addpost',upload.single('image'),async(req,res)=>{
         const {title,summary,content,imageUrls} = req.body;
+        const imageUrl = 'assets/images/'+imageUrls;
+        console.log(imageUrl);
         try{
             const post = new Post({
                 title,
                 summary,
                 content,
-                imageUrls
+                imageUrls : [imageUrl]
             });
             await post.save();
             res.send('New Post Added Succesfully');
