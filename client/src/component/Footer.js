@@ -10,15 +10,7 @@ function Footer() {
             <div class="col-md-10 col-lg-8 col-xl-7">
               <ul class="list-inline text-center">
                 <li class="list-inline-item">
-                  <a href="#!">
-                    <span class="fa-stack fa-lg">
-                      <i class="fas fa-circle fa-stack-2x"></i>
-                      <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                    </span>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#!">
+                  <a href="https://www.facebook.com/giacomo.difabrizio/">
                     <span class="fa-stack fa-lg">
                       <i class="fas fa-circle fa-stack-2x"></i>
                       <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
@@ -26,7 +18,15 @@ function Footer() {
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#!">
+                  <a href="https://www.instagram.com/giacomodifabrizio_/">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://github.com/GiacomoDiFa">
                     <span class="fa-stack fa-lg">
                       <i class="fas fa-circle fa-stack-2x"></i>
                       <i class="fab fa-github fa-stack-1x fa-inverse"></i>

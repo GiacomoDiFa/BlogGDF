@@ -38,7 +38,7 @@ function Homescreen() {
           <div class="col-md-10 col-lg-8 col-xl-7">
             {/*Pager*/}
             {listaPost.slice().reverse().map((post) => (<PostComponent key={post._id} id={post._id} title={post.title} summary={post.summary} content={post.content} imageurls={post.imageUrls[0]} />))}
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+            
           </div>
         </div>
       </div>

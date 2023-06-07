@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Swal from 'sweetalert2';
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
 
 function Adminscreen() {
   const [title, setTitle] = useState('');
@@ -9,7 +12,7 @@ function Adminscreen() {
   const [fieldNameTitleToDelete, setFieldNameTitleToDelete] = useState('title');
   const [fieldValueTitleToDelete, setFieldValueTitleToDelete] = useState('');
   const [listaPost, setListaPost] = useState([]);
-  const [image,setImage] = useState([]);
+  const [image, setImage] = useState([]);
   useEffect(() => {
     const getData = async () => {
       const url = "http://localhost:5000/api/post/getallpost";
@@ -67,9 +70,25 @@ function Adminscreen() {
       Swal.fire('Oops', 'Something went wrong!', 'error');
     }
   }
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+      ['link', 'image'],
+      ['clean']
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image'
+  ];
   return (
     <>
-      <header class="masthead" >
+    <br></br><br></br><br></br><br></br><br></br>
         <div class="container position-relative px-4 px-lg-5">
           <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -77,15 +96,14 @@ function Adminscreen() {
                 <h1>Post creation</h1>
                 <input type='text' placeholder='Title' value={title} onChange={(e) => { setTitle(e.target.value) }} />
                 <input type='text' placeholder='Summary' value={summary} onChange={(e) => { setSummary(e.target.value) }} />
-                <input type='text' placeholder='Content' value={content} onChange={(e) => { setContent(e.target.value) }} />
                 <input type='file' onChange={(e) => { setImageUrls(e.target.files[0].name); setImage(e.target.files[0]) }} />
+                <ReactQuill value={content} onChange={newValue => setContent(newValue)} modules={modules} formats={formats} />
                 <button onClick={addPost}>Add Post</button>
               </div>
             </div>
           </div>
         </div>
-      </header>
-      <header class="masthead" >
+        <br></br><br></br><br></br><br></br><br></br>
         <div class="container position-relative px-4 px-lg-5">
           <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -97,7 +115,7 @@ function Adminscreen() {
             </div>
           </div>
         </div>
-      </header>
+
     </>
   )
 }
