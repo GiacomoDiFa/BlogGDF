@@ -10677,6 +10677,14 @@ header.masthead {
   background-size: cover;
   background-attachment: scroll;
 }
+.imgback{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 header.masthead:before {
   content: "";
   position: absolute;
