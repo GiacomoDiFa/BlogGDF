@@ -3,7 +3,9 @@ const router = express.Router();
 const uuid = require('uuid');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const secretKey = 'your_secret_key';
+require('dotenv').config();
+
+const secretKey = process.env.JWT_SECRET;
 
 const User = require('../models/User');
 

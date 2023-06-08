@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const fs = require('fs');
+const path = require('path');
 
 const Post = require('../models/Post');
 
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
-        cb(null,'C:/Users/giaco/Documents/Progetti/blogbyme/client/src/assets/images/');
+        const destinationPath = path.join(__dirname, '../client/src/assets/images/')
+        cb(null,destinationPath);
     },
     filename: function(req,file,cb){
         cb(null,file.originalname);
