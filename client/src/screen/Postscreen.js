@@ -8,7 +8,7 @@ function Postscreen() {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await fetch('https://gdfblog.onrender.com/api/post/getpostbyid', {
+                const response = await fetch('http://localhost:5000/api/post/getpostbyid', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -32,10 +32,10 @@ function Postscreen() {
     }, []);
     return (
         <>
-        {post&&imageUrl&&(   
+        {post&&(   
             <div>
             <header className="masthead">
-                <img className='imgback' src={imageUrl}></img>
+                <img className='imgback' src={post.imageUrls[0]}></img>
                 <div class="container position-relative px-4 px-lg-5">
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">

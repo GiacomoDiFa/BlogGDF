@@ -18,12 +18,12 @@ function App() {
   return (
     <div className="App">
       <CustomNavbar />
-      <BrowserRouter basename='/BlogGDF'>
+      <BrowserRouter>
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route path='/admin' element={<Adminscreen />} />
           </Route>
-          <Route exact path='/BlogGDF' element={<Homescreen />} />
+          <Route path='/' element={<Homescreen />} />
           <Route path='/login' element={<Loginscreen />} />
           <Route path='/register' element={<Registerscreen />} />
           <Route path='/post/:id' element={<Postscreen />} />

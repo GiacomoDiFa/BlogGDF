@@ -5,7 +5,7 @@ function Homescreen() {
   const [listaPost, setListaPost] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const url = "https://gdfblog.onrender.com/api/post/getallpost";
+      const url = "http://localhost:5000/api/post/getallpost";
       try {
         const resp = await fetch(url);
         const data = await resp.json();
