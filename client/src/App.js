@@ -23,12 +23,12 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path='/admin' element={<Adminscreen />} />
           </Route>
-          <Route path='/' element={<Homescreen />} />
-          <Route path='/login' element={<Loginscreen />} />
-          <Route path='/register' element={<Registerscreen />} />
-          <Route path='/post/:id' element={<Postscreen />} />
-          <Route path='/about' element={<Aboutscreen/>}/>
-          <Route path='/contact' element={<Contactscreen/>}/>
+          <Route path='/BlogGDF' element={<Homescreen />} />
+          <Route path='/BlogGDF/login' element={<Loginscreen />} />
+          <Route path='/BlogGDF/register' element={<Registerscreen />} />
+          <Route path='/BlogGDF/post/:id' element={<Postscreen />} />
+          <Route path='/BlogGDF/about' element={<Aboutscreen/>}/>
+          <Route path='/BlogGDF/contact' element={<Contactscreen/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>
