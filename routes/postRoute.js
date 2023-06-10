@@ -50,7 +50,8 @@ router.post('/addpost',upload.single('image'),async(req,res)=>{
         const imageUrl = 'assets/images/'+imageUrls;
         console.log(imageUrl);
         const file = req.file;
-        cloudinary.uploader.upload(file.path,(error,result)=>{
+        cloudinary.uploader.upload(file.path,{folder:'BlogGDF'},(error,result)=>{
+            
             if(error){
                 console.error(error);
                 res.status(500).json({error:'failed to upload image'});
