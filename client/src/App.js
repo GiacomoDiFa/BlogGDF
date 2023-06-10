@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter basename='/BlogGDF'>
-      <CustomNavbar />
+        <CustomNavbar />
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route path='/admin' element={<Adminscreen />} />
@@ -27,8 +27,8 @@ function App() {
           <Route path='/login' element={<Loginscreen />} />
           <Route path='/register' element={<Registerscreen />} />
           <Route path='/post/:id' element={<Postscreen />} />
-          <Route path='/about' element={<Aboutscreen/>}/>
-          <Route path='/contact' element={<Contactscreen/>}/>
+          <Route path='/about' element={<Aboutscreen />} />
+          <Route path='/contact' element={<Contactscreen />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Swal from 'sweetalert2';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import { Link, Navigate } from 'react-router-dom';
 
 
 function Adminscreen() {
@@ -42,7 +43,7 @@ function Adminscreen() {
         body: formData,
       });
       Swal.fire('Congrats', 'Your New Post Added Succesfully', 'success').then(result => {
-        window.location.href = '/BlogGDF';
+        <Navigate to={'/'}/>;
       });
     }
     catch (error) {
@@ -63,7 +64,7 @@ function Adminscreen() {
         headers: { 'Content-Type': 'application/json' },
       });
       Swal.fire('Congrats', 'Your New Post Added Succesfully', 'success').then(result => {
-        window.location.href = '/';
+        <Navigate to={'/'}/>;
       });
     }
     catch (error) {
@@ -88,6 +89,14 @@ function Adminscreen() {
   ];
   return (
     <>
+    <header class="masthead" >
+                    <div class="container position-relative px-4 px-lg-5">
+                        <div class="row gx-4 gx-lg-5 justify-content-center">
+                            <div class="col-md-10 col-lg-8 col-xl-7">
+                            </div>
+                        </div>
+                    </div>
+                </header>
     <br></br><br></br><br></br><br></br><br></br>
         <div class="container position-relative px-4 px-lg-5">
           <div class="row gx-4 gx-lg-5 justify-content-center">

@@ -1,9 +1,34 @@
 import Container from 'react-bootstrap/Container';
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import { Link} from 'react-router-dom';
 
 
 function CustomNavbar() {
+  const token = localStorage.getItem('token');
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await fetch('https://gdfblog.onrender.com/api/user/verifyrole', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ token })
+                });
+                const data = await response.json();
+                console.log(data.decodedToken.isAdmin);
+                setIsAdmin(data.decodedToken.isAdmin);
+                setIsLoading(false);
+                console.log(isAdmin);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getData();
+    }, []);
   return (
     <>
       {/*<!-- Navigation-->*/}
@@ -19,6 +44,8 @@ function CustomNavbar() {
               <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/">Home</Link></li>
               <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/about">About</Link></li>
               <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/contact">Contact</Link></li>
+              <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/login">Login</Link></li>
+              {isAdmin ? <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/admin">Admin</Link></li>:null}
             </ul>
           </div>
         </div>
