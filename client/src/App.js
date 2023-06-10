@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import Homescreen from './screen/Homescreen';
 import Adminscreen from './screen/Adminscreen';
 import Loginscreen from './screen/Loginscreen';
@@ -17,8 +17,8 @@ import Contactscreen from './screen/Contactscreen';
 function App() {
   return (
     <div className="App">
-      <CustomNavbar />
       <BrowserRouter basename='/BlogGDF'>
+      <CustomNavbar />
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route path='/admin' element={<Adminscreen />} />

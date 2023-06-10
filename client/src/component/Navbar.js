@@ -1,22 +1,24 @@
 import Container from 'react-bootstrap/Container';
 import React from 'react'
+import { Link} from 'react-router-dom';
+
 
 function CustomNavbar() {
   return (
     <>
       {/*<!-- Navigation-->*/}
-      <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container px-4 px-lg-5">
-          <a class="navbar-brand" href="/BlogGDF">GDF Blog</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <nav className="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div className="container px-4 px-lg-5">
+          <Link className="navbar-brand" to="/">GDF Blog</Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto py-4 py-lg-0">
-              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/BlogGDF">Home</a></li>
-              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/BlogGDF/about">About</a></li>
-              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/BlogGDF/contact">Contact</a></li>
+          <div className="collapse navbar-collapse" id="navbarResponsive">
+            <ul className="navbar-nav ms-auto py-4 py-lg-0">
+              <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/">Home</Link></li>
+              <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/about">About</Link></li>
+              <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/contact">Contact</Link></li>
             </ul>
           </div>
         </div>
@@ -25,4 +27,4 @@ function CustomNavbar() {
   );
 }
 
-export default CustomNavbar
+export default CustomNavbar;
