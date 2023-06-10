@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
+import Loader from '../component/Loader';
 function Postscreen() {
     let { id } = useParams();
     const [post, setPost] = useState();
     const [imageUrl,setImageUrl] = useState('');
+    const [loading,setLoading] = useState();
     useEffect(() => {
+        setLoading(true);
         const getData = async () => {
             try {
                 const response = await fetch('https://gdfblog.onrender.com/api/post/getpostbyid', {
@@ -19,6 +22,7 @@ function Postscreen() {
                 console.log(id);
                 console.log(data);
                 setPost(data);
+                setLoading(false);
                 const imageFileName = data.imageUrls[0];
                 const finalImageUrl = require(`../${imageFileName}`);
                 console.log(data.imageUrls[0]);
@@ -32,10 +36,10 @@ function Postscreen() {
     }, []);
     return (
         <>
-        {post&&(   
+        {post&&!loading ? (   
             <div>
             <header className="masthead">
-                <img className='imgback' src={post.imageUrls[0]}></img>
+                <img className='imgback' src={post.imageUrls[0]} alt='post'></img>
                 <div class="container position-relative px-4 px-lg-5">
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">
@@ -57,7 +61,9 @@ function Postscreen() {
                     </div>
                 </div>
             </article>
-            </div>)}
+            </div>):
+        (<Loader/>)    
+        }
         </>
     )
 }

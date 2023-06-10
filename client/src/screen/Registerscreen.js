@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+/*import React, { useState } from 'react';
 
 function Registerscreen() {
   const [username, setUsername] = useState('');
@@ -15,7 +14,7 @@ function Registerscreen() {
         },
         body: JSON.stringify({ username, password })
       });
-      const data = await response.json();
+      //const data = await response.json();
 
       // Reindirizza l'utente alla pagina home
       window.location.href='/';
@@ -35,3 +34,4 @@ function Registerscreen() {
 }
 
 export default Registerscreen;
+*/
