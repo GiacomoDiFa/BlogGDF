@@ -31,7 +31,6 @@ router.post('/login', async (req, res) => {
     try {
         // Verifica le credenziali di accesso
         const user = await User.findOne({ email: username });
-        console.log(user);
         if (!user) {
             return res.status(404).json("Utente non trovato");
         }

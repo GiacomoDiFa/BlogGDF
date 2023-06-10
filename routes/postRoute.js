@@ -48,7 +48,6 @@ router.post('/getpostbyid',async(req,res)=>{
 router.post('/addpost',upload.single('image'),async(req,res)=>{
         const {title,summary,content,imageUrls} = req.body;
         const imageUrl = 'assets/images/'+imageUrls;
-        console.log(imageUrl);
         const file = req.file;
         cloudinary.uploader.upload(file.path,{folder:'BlogGDF'},(error,result)=>{
             
