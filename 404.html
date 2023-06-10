@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <script type="text/javascript">
+      // Redirect all 404 errors to index.html
+      (function () {
+        var redirectUrl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/index.html';
+        window.location.replace(redirectUrl);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Page Not Found</p>
+  </body>
+</html>
