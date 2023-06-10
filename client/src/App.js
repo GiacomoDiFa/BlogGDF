@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <CustomNavbar />
-      <BrowserRouter>
+      <BrowserRouter basename='/BlogGDF'>
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route path='/admin' element={<Adminscreen />} />

@@ -8,7 +8,7 @@ function Postscreen() {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/post/getpostbyid', {
+                const response = await fetch('https://gdfblog.onrender.com/api/post/getpostbyid', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

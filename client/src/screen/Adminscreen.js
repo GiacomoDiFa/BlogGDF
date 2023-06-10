@@ -15,7 +15,7 @@ function Adminscreen() {
   const [image, setImage] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const url = "http://localhost:5000/api/post/getallpost";
+      const url = "https://gdfblog.onrender.com/api/post/getallpost";
       try {
         const resp = await fetch(url);
         const data = await resp.json();
@@ -37,12 +37,12 @@ function Adminscreen() {
       formData.append('title', title);
       formData.append('summary', summary);
       formData.append('content', content);
-      const response = await fetch('http://localhost:5000/api/post/addpost', {
+      const response = await fetch('https://gdfblog.onrender.com/api/post/addpost', {
         method: 'POST',
         body: formData,
       });
       Swal.fire('Congrats', 'Your New Post Added Succesfully', 'success').then(result => {
-        window.location.href = '/';
+        window.location.href = '/BlogGDF';
       });
     }
     catch (error) {
@@ -57,7 +57,7 @@ function Adminscreen() {
       console.log(fieldValueTitleToDelete);
       const result = listaPost.find(item => item[fieldNameTitleToDelete] === fieldValueTitleToDelete);
       console.log(result._id);
-      const response = await fetch('http://localhost:5000/api/post/removepost', {
+      const response = await fetch('https://gdfblog.onrender.com/api/post/removepost', {
         method: 'POST',
         body: JSON.stringify({ _id: result._id }),
         headers: { 'Content-Type': 'application/json' },

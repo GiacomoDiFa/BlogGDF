@@ -8,7 +8,7 @@ function Loginscreen() {
   const handleLogin = async () => {
     // Effettua la chiamata API per il login con username e password
     try {
-      const response = await fetch('http://localhost:5000/api/user/login', {
+      const response = await fetch('https://gdfblog.onrender.com/api/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ function Loginscreen() {
       console.log(data.token);
 
       // Reindirizza l'utente alla pagina home
-      window.location.href = '/';
+      window.location.href = '/BlogGDF';
     } catch (error) {
       console.error(error);
     }

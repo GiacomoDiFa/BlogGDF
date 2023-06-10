@@ -8,7 +8,7 @@ function Registerscreen() {
   const handleRegistration = async () => {
     // Effettua la chiamata API per il login con username e password
     try {
-      const response = await fetch('http://localhost:5000/api/user/register', {
+      const response = await fetch('https://gdfblog.onrender.com/api/user/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
