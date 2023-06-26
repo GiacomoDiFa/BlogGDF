@@ -1,4 +1,3 @@
-import Container from 'react-bootstrap/Container';
 import {React,useState,useEffect} from 'react'
 import { Link} from 'react-router-dom';
 
@@ -43,7 +42,7 @@ function CustomNavbar() {
             <ul className="navbar-nav ms-auto py-4 py-lg-0">
               <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/">Home</Link></li>
               <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/about">About</Link></li>
-              <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/contact">Contact</Link></li>
+              <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/contact">Servizi</Link></li>
               <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/login">Login</Link></li>
               {isAdmin ? <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/admin">Admin</Link></li>:null}
             </ul>
