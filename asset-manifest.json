@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/BlogGDF/static/css/main.7fadbe9f.css",
-    "main.js": "/BlogGDF/static/js/main.70e6e285.js",
+    "main.css": "/BlogGDF/static/css/main.fad2516b.css",
+    "main.js": "/BlogGDF/static/js/main.e77c1fab.js",
     "static/js/787.c4e7f8f9.chunk.js": "/BlogGDF/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/science.jpg": "/BlogGDF/static/media/science.a8d2a763f29a26845fa0.jpg",
+    "static/media/math.jpg": "/BlogGDF/static/media/math.6d3bb95de863ec69ebf0.jpg",
     "static/media/fa-solid-900.ttf": "/BlogGDF/static/media/fa-solid-900.4a2cd718d7031b732e76.ttf",
     "static/media/about.jpg": "/BlogGDF/static/media/about.8ead64cefc8695d5a13b.jpg",
     "static/media/fa-brands-400.ttf": "/BlogGDF/static/media/fa-brands-400.150de8eaa454d669c405.ttf",
     "static/media/fa-solid-900.woff2": "/BlogGDF/static/media/fa-solid-900.bb975c966c37455a1bc3.woff2",
+    "static/media/fisica.jpg": "/BlogGDF/static/media/fisica.bd1af2f1179b0e3b3a14.jpg",
     "static/media/fa-brands-400.woff2": "/BlogGDF/static/media/fa-brands-400.e033a13ee751afc1860c.woff2",
+    "static/media/informatica.webp": "/BlogGDF/static/media/informatica.fbb7c73aed6d20c1be6b.webp",
     "static/media/fa-regular-400.ttf": "/BlogGDF/static/media/fa-regular-400.d87474231f4192884802.ttf",
     "static/media/blog.jpg": "/BlogGDF/static/media/blog.0575173507275c5db9b5.jpg",
     "static/media/fa-regular-400.woff2": "/BlogGDF/static/media/fa-regular-400.3223dc79c1adee56370b.woff2",
@@ -15,12 +19,12 @@
     "static/media/fa-v4compatibility.woff2": "/BlogGDF/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
     "static/media/logo.svg": "/BlogGDF/static/media/logo.6ce24c58023cc2f8fd88.svg",
     "index.html": "/BlogGDF/index.html",
-    "main.7fadbe9f.css.map": "/BlogGDF/static/css/main.7fadbe9f.css.map",
-    "main.70e6e285.js.map": "/BlogGDF/static/js/main.70e6e285.js.map",
+    "main.fad2516b.css.map": "/BlogGDF/static/css/main.fad2516b.css.map",
+    "main.e77c1fab.js.map": "/BlogGDF/static/js/main.e77c1fab.js.map",
     "787.c4e7f8f9.chunk.js.map": "/BlogGDF/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fadbe9f.css",
-    "static/js/main.70e6e285.js"
+    "static/css/main.fad2516b.css",
+    "static/js/main.e77c1fab.js"
   ]
 }
